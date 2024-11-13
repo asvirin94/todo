@@ -5,6 +5,13 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "types": ["jest", "@testing-library/jest-dom"],
+    "lib": ["es2016", "dom"],
+    "jsx": "react-jsx",
+    "module": "esnext",
+    "target": "es5",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

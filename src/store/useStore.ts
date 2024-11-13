@@ -21,9 +21,9 @@ type TaskStore = {
 
 export const useStore = create<TaskStore>((set, get) => ({
   tasks: INITIAL_TASKS,
-  filteredTasks: [],
+  filteredTasks: INITIAL_TASKS,
   filterStatus: "all",
-  filterPriority: ['low', 'normal', 'high'],
+  filterPriority: ["low", "normal", "high"],
   newTaskPriority: "",
   newTaskTitle: "",
 
@@ -63,12 +63,10 @@ export const useStore = create<TaskStore>((set, get) => ({
 
     if (taskToUpdate) {
       const newStatus = taskToUpdate.status === "active" ? "done" : "active";
-      taskToUpdate.status = newStatus;
+      const updatedTask = { ...taskToUpdate, status: newStatus };
 
       set({
-        tasks: tasks.map((task) =>
-          task.id === id ? taskToUpdate : task
-        ),
+        tasks: tasks.map((task) => (task.id === id ? updatedTask : task)),
       });
     }
   },
@@ -76,8 +74,6 @@ export const useStore = create<TaskStore>((set, get) => ({
   setNewTaskPriority: (priority: string) => set({ newTaskPriority: priority }),
 
   setNewTaskTitle: (title: string) => set({ newTaskTitle: title }),
-
-  
 
   resetAddTaskForm: () =>
     set(() => ({

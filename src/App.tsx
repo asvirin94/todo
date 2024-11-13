@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { useStore } from "./store/useStore";
 import Container from "./ui/components/Container";
 import { Title } from "./ui/components/Title/styled";
 import Wrapper from "./ui/components/Wrapper";
@@ -13,14 +11,10 @@ import {
   DialogTrigger,
 } from "./shadComponents/dialog";
 import { Button } from "./shadComponents/button";
+import { useState } from "react";
 
 export default function App() {
-  const setFilteredTasks = useStore((state) => state.setFilteredTasks);
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(true)
-
-  useEffect(() => {
-    setFilteredTasks();
-  });
 
   return (
     <Wrapper>
