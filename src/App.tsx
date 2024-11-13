@@ -14,7 +14,7 @@ import { Button } from "./shadComponents/button";
 import { useState } from "react";
 
 export default function App() {
-  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(true)
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(true);
 
   return (
     <Wrapper>
@@ -32,9 +32,9 @@ export default function App() {
               <DialogTitle>Привет, Minbox</DialogTitle>
               <DialogDescription>
                 Это третья попытка сделать тудушку, предыдущие две не устраивали
-                меня либо по дизайну, либо по стеку, который я выбирал. Было потрачено
-                немало времени, поэтому, надеюсь, работа оставит приятное
-                впечатление.
+                меня либо по дизайну, либо по стеку, который я выбирал. Было
+                потрачено немало времени, поэтому, надеюсь, работа оставит
+                приятное впечатление.
                 <br />
                 <br />
                 Мой обычный стек - React, TS, RTK, MUI. В этой работе решил
@@ -43,6 +43,8 @@ export default function App() {
                 умею пользовать React-контекстом :)
                 <br />
                 <br />
+                P.S. таблица с тасками является слайдером. Когда их станет
+                больше 7, то можно делать свайпы влепо и вправо :)
               </DialogDescription>
             </DialogHeader>
           </DialogContent>
