@@ -1,12 +1,12 @@
 import AddTask from "../AddTask";
 import Filters from "../Filters";
-import { HeaderWrapper } from "./styled";
+import { ContentWrapper } from "./styled";
 
-export default function Header() {
+export default function Content() {
   return (
-    <HeaderWrapper>
+    <ContentWrapper>
       <Filters />
       <AddTask />
-    </HeaderWrapper>
+    </ContentWrapper>
   );
 }

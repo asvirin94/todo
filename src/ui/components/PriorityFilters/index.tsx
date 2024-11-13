@@ -19,19 +19,18 @@ import {
 import { useState } from "react";
 import { PRIORITIES } from "@/consts/priorities";
 import PrioritiesBadges from "../PrioritiesBadges";
+import { useStore } from "@/store/useStore";
 
 export function PriorityFilters() {
+  const togglePriorityFilter = useStore((state) => state.toggleFilterPriority)
+  const setFilteredTasks = useStore((state) => state.setFilteredTasks);
+  const filterPriority = useStore((state) => state.filterPriority)
   const [open, setOpen] = useState(false);
-  const [values, setValues] = useState<string[]>([]);
 
-  const priorityClickHandler = (value: string) => {
-    if (values.includes(value)) {
-      const newValues = values.filter((v) => v !== value);
-      setValues(newValues);
-    } else {
-      setValues((prev) => [...prev, value]);
-    }
-  };
+  const handlePriorityToggle = (value: string) => {
+    togglePriorityFilter(value);
+    setFilteredTasks();
+  }
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -44,7 +43,7 @@ export function PriorityFilters() {
         >
           <ChevronsUpDown className="opacity-50" />
           Priority
-          {values.length > 0 ? <PrioritiesBadges values={values} /> : ""}
+          {filterPriority.length > 0 ? <PrioritiesBadges values={filterPriority} /> : ""}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
@@ -58,7 +57,7 @@ export function PriorityFilters() {
                   key={priority.value}
                   value={priority.value}
                   onSelect={(currentValue) => {
-                    priorityClickHandler(currentValue);
+                    handlePriorityToggle(currentValue);
                     setOpen(false);
                   }}
                 >
@@ -66,7 +65,7 @@ export function PriorityFilters() {
                   <Check
                     className={cn(
                       "ml-auto",
-                      values.includes(priority.value)
+                      filterPriority.includes(priority.value)
                         ? "opacity-100"
                         : "opacity-0"
                     )}
