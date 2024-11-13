@@ -20,7 +20,7 @@ export default function App() {
     <Wrapper>
       <Container>
         <Title>
-          Hello, <span>mbm</span>, start planning today
+          Hello, <span>Mindbox</span>, start planning today
         </Title>
         <Content />
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
